@@ -17,6 +17,7 @@ certbot_certs: []
 #     - example2.com
 # - domains:
 #     - example3.com
+certbot_webroot_path: /var/www/htdocs
 certbot_create_command: >-
   {{ certbot_script }} certonly --standalone --noninteractive --agree-tos
   --email {{ cert_item.email | default(certbot_admin_email) }}
