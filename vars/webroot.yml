@@ -6,3 +6,5 @@ certbot_create_command: >-
   --noninteractive --agree-tos
   --email {{ cert_item.email | default(certbot_admin_email) }}
   -d {{ cert_item.domains | join(',') }}
+  --deploy-hook="{{ certbot_deploy_hook }}"
+  --post-hook="{{ certbot_post_hook }}"

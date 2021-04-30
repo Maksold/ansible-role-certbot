@@ -16,10 +16,14 @@ certbot_certs: []
 # - domains:
 #     - example3.com
 certbot_webroot_path: /var/www/htdocs
+certbot_deploy_hook: ""
+certbot_post_hook: ""
 certbot_create_command: >-
   {{ certbot_script }} certonly --standalone --noninteractive --agree-tos
   --email {{ cert_item.email | default(certbot_admin_email) }}
   -d {{ cert_item.domains | join(',') }}
+  --deploy-hook="{{ certbot_deploy_hook }}"
+  --post-hook="{{ certbot_post_hook }}"
 
 certbot_create_standalone_stop_services:
   - nginx
